@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/global.css"> 
+    <link rel="stylesheet" href="./assets/css/global.css">  
+    <link rel="stylesheet" href="./assets/css/pokedex.css">
 </head>
 <body>
     <section class="content">
@@ -22,29 +23,16 @@
         </h1> 
 
         <ol class="pokemons">
-            <li>
-                Bulbasaur 
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="Imagem do Bulbasaur">
-            </li> 
-            <li>
-                Ivysaur 
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg" alt="Imagem do Ivysaur">
-            </li>
-            <li>
-                Venusaur 
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg" alt="Imagem do Venusaur">
-            </li> 
-            <li>
-                Charmander 
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg" alt="Imagem do Charmander">
-            </li> 
-            <li>
-                Charmeleon 
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg" alt="Imagem do Charmeleon">
-            </li>
-            <li>
-                Charizard 
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg" alt="Imagem do Charizard">
+            <li class="pokemon"> 
+                <span class="number">#001</span> 
+                <span class="name">Bulbasaur</span>
+                <div class="detail">  
+                    <ol class="types"> 
+                        <li class="type">Grass</li>
+                        <li class="type">Poison</li>
+                    </ol>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="Imagem do Bulbasaur">
+                </div>
             </li> 
         </ol>
     </section>
@@ -53,4 +41,18 @@
     <!-- JavaScript -->
     <script src="./assets/js/main.js"></script>
 </body>
-</html>
+</html> 
+
+
+
+<!--  
+Para montar uma requisição HTTP 
+
+URL: https://pokeapi.co/api/v2/pokemon/ 
+Nossa URL é composta de 
+    ${Endereço}/${path = caminho de identificação do recurso} 
+
+IP : https://pokeapi.co 
+
+Request Method: GET | POST | PUT | DELETE | PATCH 
+-->

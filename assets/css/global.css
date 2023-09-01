@@ -2,36 +2,24 @@
     font-family: 'Poppins', sans-serif; 
     box-sizing: border-box; /*Para que o padding não aumente o tamanho do elemento*/
                                                 
+} 
+body{
+    background-color: #f6f8fc;
 }
 
 .content {
-    padding: 1rem;
-} 
-
-
-
-ol.pokemons {
-    display: grid; 
-    grid-template-columns: 1fr 1fr;
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
-} 
-
-ol.pokemons li { 
-    display: flex;
-    flex-direction: column; 
-    margin: .5rem; 
     padding: 1rem; 
-    border-radius: 1rem; 
-    background-color: #14a06f; 
-    color: white; 
-    
-    
+    background-color: #fff; 
+    height: 100vh; 
+    width: 100vw;
 } 
 
-ol.pokemons li img {
-    max-width: 100%; /*Para que ela nunca vase da tela*/  
-    height: 100px; 
-    align-self: flex-end;
+@media  screen and (min-width: 768px) {
+    .content {
+        max-width: 992px; 
+        margin: 1rem auto;  
+        height: auto;
+    }
 }
+    
+
