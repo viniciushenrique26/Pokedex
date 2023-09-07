@@ -1,24 +1,18 @@
-// pega o elemento que vamos inserir o pokemon
-const loadPokemon = document.getElementById('loadPokemon')
+const loadPokemon = document.getElementById('loadPokemon') //essa linha seleciona a classe loadPokemon
 
-// pega a url da pagina atual
-const pagURL = window.location.href
+const pagURL = window.location.href // pega a url da página
 
-// separa a parte relativa a atribuição
-const splitURL = pagURL.split("=")
+const splitURL = pagURL.split("=") // faz um split na url
 
-// define a variável id
-let id = 0
+let id = 0 // define o id como 0
 
-// caso tenha ocorrido o split e ele seja maior que 1 ocorre um pop no id, caso não tenha o valor default será 1
 if (splitURL.length > 1) {
     id = splitURL.pop()
 } else {
     id = 1
-}
+} // se o split for maior que 1, o id recebe o último valor do split, se não, o id recebe 1
 
-// define a url que para requisição
-const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+const url = `https://pokeapi.co/api/v2/pokemon/${id}` // define a url com o id
 console.log(url)
 
 // função para pegar os detalhes do pokemon e retornar no HTML
