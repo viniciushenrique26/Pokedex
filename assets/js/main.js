@@ -25,11 +25,13 @@
 // Promisse.All é um método que retorna uma única Promise que resolve quando todas as promises no argumento iterável forem resolvidas ou quando o iterável passado como argumento não contém promises.
 
 const pokemonList = document.getElementById('pokemonList') //essa linha seleciona a classe pokemons.  
-const loadMoreButton = document.getElementById('loadMoreButton') //essa linha seleciona a classe loadMoreButton. 
-const limit = 5; 
+const loadMoreButton = document.getElementById('loadMoreButton') //essa linha seleciona a classe loadMoreButton.  
+const input = document.getElementById('search'); //essa linha seleciona a classe search.
+
+const limit = 15; 
 let offset = 0;
 
-const maxRecords = 151; 
+const maxRecords = 45; 
 
 
 
@@ -38,8 +40,8 @@ function loadPokemonItems(offset,limit){
     pokeApi.getPokemons(offset,limit).then((pokemons = []) => {  
         const newHtml = pokemons.map((pokemon) => ` 
            
-            <li class="pokemon ${pokemon.type}">  
-                
+            <li class="fadeIn">  
+                <a href="detail.html?id=${pokemon.id}" class="pokemon">
                 <span class="number">#00${pokemon.number}</span> 
                 <span class="name">${pokemon.name}</span> 
 
@@ -57,19 +59,81 @@ function loadPokemonItems(offset,limit){
     }) 
 }  
 
-loadPokemonItems(offset,limit)
-loadMoreButton.addEventListener('click', () => {  
-    offset += limit
-    const qtdRecordNextPage = offset + limit;
+function loadPokemonitens(offset, limit) {
+    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        const newHtml = pokemons.map((pokemon) =>
+            `<li class="fadeIn">
+                <a href="detail.html?id=${pokemon.id}" class="pokemon">
+                <span class="number slideInDown">#${pokemon.number}</span>
+                <h2 class="name slideInDown">${pokemon.name}</h2>
+                <div class="detail">
+                    <ol class="types">
+                        ${pokemon.types.map((type) => `<li class="type slideInLeft ${type}">${type}</li>`).join('')}
+                    </ol>
+                <img src="${pokemon.photo}" alt="${pokemon.name}" width="156" height="144" class="slideInRight"> 
+                </div>
+            </a>
+        </li> 
+    `
+        ).join('')
+        pokemonList.innerHTML += newHtml
 
-    if(qtdRecordNextPage >= maxRecords){  
-        const newLimit = maxRecords - offset;
-        loadPokemonItems(offset,newLimit)
+        input.oninput = () => {
+            if (input.value.length > 0) {
+                pokemonList.innerHTML = ""
+            } else {
+                pokemonList.innerHTML = newHtml
+            }
+
+            pokemons.forEach((pokemon) => {
+                const pokeName = pokemon.name.toString();
+                let adicionouPoke = false;
+                let str = ''
+
+                for (let i = 0; i < pokeName.length; i++) {
+                    str += pokeName[i]
+                    if (input.value.includes(pokeName[i]) && input.value === str) {
+                        console.log(str)
+                        adicionouPoke = true;
+                    }
+                }
+                if (adicionouPoke) {
+                    const newHtml = `
+                            <li class="fadeIn">
+                                <a href="detail.html?id=${pokemon.id}" class="pokemon">
+                                    <span class="number slideInDown">#${pokemon.number}</span>
+                                    <h2 class="name slideInDown">${pokemon.name}</h2>
+                                    <div class="detail">
+                                        <ol class="types">
+                                            ${pokemon.types.map((type) => `<li class="type slideInLeft ${type}">${type}</li>`).join('')}
+                                        </ol>
+                                        <img src="${pokemon.photo}" alt="${pokemon.name}" width="156" height="144" class="slideInRight"> 
+                                    </div>
+                                </a>
+                            </li> 
+                        `
+                    pokemonList.innerHTML += newHtml
+                }
+            }
+            )
+        }
+    })
+}
+
+loadPokemonitens(offset, limit)
+
+loadMoreButton.addEventListener('click', () => {
+    offset += limit
+
+    const qtdRecord = offset + limit
+
+    if (qtdRecord >= maxRecords) {
+        const newLimit = maxRecords - offset
+        loadPokemonitens(offset, newLimit)
 
         loadMoreButton.parentElement.removeChild(loadMoreButton)
-    }else {
-        loadPokemonItems(offset,limit)
-
+    } else {
+        loadPokemonitens(offset, limit)
     }
 })
 

@@ -4,7 +4,12 @@ class Pokemon {
     type;
     types = [];   
     photo; 
-    photoDesactive;
+    photoDesactive; 
+    height; 
+    weight; 
+    stat; 
+    stats = []; 
+    
 }  
 
 
