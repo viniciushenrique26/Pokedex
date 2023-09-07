@@ -31,7 +31,7 @@ const input = document.getElementById('search'); //essa linha seleciona a classe
 const limit = 15; 
 let offset = 0;
 
-const maxRecords = 45; 
+const maxRecords = 151; 
 
 
 
