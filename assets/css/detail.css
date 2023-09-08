@@ -1,6 +1,7 @@
 .body-detail{ 
-    background-image: url("https://e1.pxfuel.com/desktop-wallpaper/421/241/desktop-wallpaper-pokemon-forest-backgrounds-%C2%B7%E2%91%A0-pokemon-background.jpg"); 
-    background-repeat: no-repeat; 
+    background-color: #f6f8fc; 
+    background-image: url("https://img.freepik.com/free-photo/abstract-luxury-plain-blur-grey-black-gradient-used-as-background-studio-wall-display-your-products_1258-63644.jpg");
+    backdrop-filter: blur(3px);
     background-size: cover;
 } 
 
@@ -137,7 +138,7 @@
     text-align: right;
     z-index: 2;
     text-transform: capitalize; 
-    color: white;
+    color: black;
 }
 
 .pokemon-conteudo span {
@@ -146,7 +147,7 @@
     right: 5px;
     font-weight: 700;
     font-size: 3rem; 
-    color: white;
+    color: black;
 }
 
 .pokemon-conteudo ol {
